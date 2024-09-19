@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/template.css">
+    <script src="../static/js/script.js" defer></script>
+    <title>Consulta de CEP</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Consulta de CEP</h2>
+        
+        <form id="cepForm">
+            <div class="form-group mb-3">
+                <label for="cep">CEP</label>
+                <input type="text" class="form-control" id="cep" placeholder="Digite o CEP">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Buscar CEP</button>
+
+            <div class="form-group mb-3 mt-4">
+                <label for="logradouro">Logradouro</label>
+                <input type="text" class="form-control" id="logradouro" readonly>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="bairro">Bairro</label>
+                <input type="text" class="form-control" id="bairro" readonly>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="cidade">Cidade</label>
+                <input type="text" class="form-control" id="cidade" readonly>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="estado">Estado</label>
+                <input type="text" class="form-control" id="estado" readonly>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+        $('#cepForm').on('submit', function(e) {
+            e.preventDefault();
+
+            let cep = $('#cep').val();
+
+            $.ajax({
+                url: '/procurar-cep',
+                type: 'POST',
+                data: { cep: cep },
+                success: function(data) {
+                    if(data.error) {
+                        alert('CEP não encontrado!');
+                    } else {
+                        $('#logradouro').val(data.logradouro);
+                        $('#bairro').val(data.bairro);
+                        $('#cidade').val(data.cidade);
+                        $('#estado').val(data.estado);
+                    }
+                },
+                error: function() {
+                    alert('Erro ao buscar o CEP.');
+                }
+            });
+        });
+    });
+
+    </script>
+</body>
+</html>

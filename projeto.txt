@@ -1,0 +1,20 @@
+venv/: Onde ficará o ambiente virtual, quando você o criar. Essa pasta será ignorada pelo Git (definido no .gitignore).
+
+src/: Pasta que contém o código principal do projeto. Isso inclui:
+
+main.py: O ponto de entrada do programa. Aqui você pode colocar o código que vai consumir a API de filmes e qualquer outra lógica inicial.
+utils.py: Arquivo opcional para funções auxiliares ou ferramentas que você deseja separar do código principal.
+static/: Arquivos estáticos, como CSS, JavaScript, e imagens. Essa pasta é importante se você for incluir uma interface web no futuro:
+
+css/: Para os arquivos de estilo (CSS).
+js/: Para os arquivos JavaScript (caso use scripts no frontend).
+img/: Para imagens ou logos usados no projeto.
+templates/: Pasta onde você pode colocar os arquivos HTML, caso use templates no futuro (se você decidir implementar algo como Flask). No início, você pode deixar vazia.
+
+tests/: Arquivos de testes unitários para o seu projeto. O ideal é que cada módulo tenha um arquivo de teste correspondente, como test_main.py para o arquivo main.py.
+
+requirements.txt: Esse arquivo será gerado no futuro, quando você instalar bibliotecas como requests ou qualquer outra dependência. Ele mantém a lista das dependências necessárias para rodar o projeto.
+
+.gitignore: Arquivo para definir quais pastas e arquivos devem ser ignorados pelo Git (como o venv/ e arquivos de cache).
+
+README.md: Arquivo de documentação do projeto, onde você pode descrever o que é o projeto, como rodá-lo, suas funcionalidades, etc.

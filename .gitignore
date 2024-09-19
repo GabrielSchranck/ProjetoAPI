@@ -1,0 +1,17 @@
+# Ignorar a pasta do ambiente virtual
+venv/
+
+# Ignorar arquivos de cache do Python
+__pycache__/
+*.py[cod]
+
+# Ignorar arquivos de log
+*.log
+
+# Ignorar configurações específicas de IDEs
+.vscode/
+.idea/
+
+# Ignorar arquivos de sistema operacional
+.DS_Store  # macOS
+Thumbs.db  # Windows
